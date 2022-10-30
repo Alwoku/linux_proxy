@@ -1,0 +1,53 @@
+
+.li{
+    display: inline; 
+    margin: 1em;
+}
+table {
+    margin: auto;
+    table-layout:fixed;
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+@media only screen and (max-width: 480px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .tablemobile {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .table_gl {
+        overflow: auto;
+        position: static;
+        display: block;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .table_t {
+        width: 100%;
+        overflow: visible;
+        position: static;
+        display: block;
+    }
+}
+
+.is-one{
+    width: 10%;
+}
+
+.message{
+    text-align: center;
+    text-decoration: none;
+}
+/* a{
+
+} */
