@@ -21,6 +21,24 @@ td {
     }
 }
 
+@media only screen and (max-width: 540px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    #paginate {
+    position: static;
+    display: block;
+    align-items: baseline;
+    }
+    .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous {
+        font-size: 9px;
+        justify-content: center;
+        margin: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        text-align: center;
+    }
+}
+
+
 @media only screen and (max-width: 1250px) {
     /* horizontal scrollbar for tables if mobile screen */
     .table_gl {
@@ -28,10 +46,19 @@ td {
         position: static;
         display: block;
     }
-}
 
-@media only screen and (max-width: 1250px) {
-    /* horizontal scrollbar for tables if mobile screen */
+    #paginate {
+        display:inline-block;
+        font-size: 10px; 
+    }
+    .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous {
+
+        justify-content: center;
+        margin: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        text-align: center;
+    }
     .table_t {
         width: 100%;
         overflow: visible;

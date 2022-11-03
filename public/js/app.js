@@ -2,34 +2,45 @@
 
 $(document).ready(function(){    
   $("#ad_btn").click( function() {
-    // event.preventDefault();
       var _token = $("input[name='_token']").val();
       var ip = $("#ip").val();
-      // console.log(_token + ip);
-      var tp = $("#type").val();
-      var tim = $("#time").val();
-      var date = $("#date").val();
+      var type = $("#type").val();
+      var time = $("#time").val();
+      var created_at = $("#date").val();
       var port = $("#port").val();
+      var description = $("#description").val();
+      var checked_ma = $("#checked_ma").val();
+      console.log(checked_ma);
         $.ajax({
       uploadUrl:"{{route('add')}}",
               type: 'POST',
               data: {
                     _token: _token,
                     ip: ip,
-                    tp: tp,
-                    tim: tim,
-                    date: date,
-                    port: port
+                    type: type,
+                    time: time,
+                    created_at: created_at,
+                    port: port,
+                    description: description,
+                    checked_ma: checked_ma
                   },
-                  dataType:'html',
+                  dataType:'json',
+              error: function (err) {
+                if (err.status == 422) { // when status code is 422, it's a validation issue
+                    // console.log(err.responseJSON);
+                    $("#errors").html("");
+                    $.each(err.responseJSON.errors, function (key, value) {
+                    $('#errors').append('<li >'+value+'</li>');
+                    });
+                   
+                }
+              },
               success: function(data) {
-                console.log(data);
-                if(data == "ok"){
-                  window.location.replace("/");
-                  
-                }else{
-                  $("#errors").html("<p>"+ data+ "</p>");
-               }
+
+                 if(data.messange == "ok"){
+                  location.reload();
+
+                }
               }
         });
       })
@@ -39,34 +50,46 @@ $(document).ready(function(){
     
     $(document).ready(function(){    
       $("#ad_up").click( function() {
-        // event.preventDefault();
-          var _token = $("input[name='_token']").val();
-          var ip = $("#ip").val();
-          // console.log(_token + ip);
-          var tp = $("#type").val();
-          var tim = $("#time").val();
-          var date = $("#date").val();
-          var port = $("#port").val();
+
+        var _token = $("input[name='_token']").val();
+        var ip = $("#ip").val();
+        var type = $("#type").val();
+        var time = $("#time").val();
+        var created_at = $("#date").val();
+        var port = $("#port").val();
+        var description = $("#description").val();
+        var checked_ma = $("#checked_ma").val();
+        
+        console.log(checked_ma);
             $.ajax({
           uploadUrl:"{{route('update')}}",
                   type: 'POST',
                   data: {
-                        _token: _token,
-                        ip: ip,
-                        tp: tp,
-                        tim: tim,
-                        date: date,
-                        port: port
+                    _token: _token,
+                    ip: ip,
+                    type: type,
+                    time: time,
+                    created_at: created_at,
+                    port: port,
+                    description: description,
+                    checked_ma: checked_ma
                       },
-                      dataType:'html',
+                      dataType:'json',
+                      error: function (err) {
+                        if (err.status == 422) { // when status code is 422, it's a validation issue
+                            console.log(err.responseJSON);
+                            $("#errors").html("");
+                            $.each(err.responseJSON.errors, function (key, value) {
+                            $('#errors').append('<li >'+value+'</li>');
+                            });
+                           
+                        }
+                      },
                   success: function(data) {
                     console.log(data);
-                    if(data == "ok"){
-                      window.location.replace("/");
-                      
-                    }else{
-                      $("#errors").html("<p>"+ data+ "</p>");
-                   }
+                    if(data.messange == "ok"){
+                      history.go(-1);
+                    }
                   }
             });
           })

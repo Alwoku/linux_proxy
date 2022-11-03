@@ -8,15 +8,18 @@ use App\Models\Table;
 class DbController extends Controller
 {
 
-//  Выбираем записи для главной страницы
+
+//  Output of records to the main page.
     public function home(){
       
-    $data = Table::sortable()->Paginate(100);
+    $data = Table::orderBy('created_at', 'desc')->Paginate(100);
         return view('db', compact('data'));
     }
-//  Принимаем данные и удаляем нужную запись 
+// Deleting a record from the database.
+
     public function delete(Table $id){
        $id->delete();
     return redirect('/')->with('done', 'Запись удалена');
     }
+
 }

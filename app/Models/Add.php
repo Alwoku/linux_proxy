@@ -17,8 +17,4 @@ class Add extends Model{
      */
     protected $table = 'proxy_scan_log';
 
-    // public function tab(){
-    //     $res = DB::table('proxy_scan_log');
-    //     return $res;
-    // }
 }

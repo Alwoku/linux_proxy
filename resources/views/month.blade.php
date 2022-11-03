@@ -19,7 +19,7 @@
         
             @for($i=0;$i< count($res_m);$i++)
                 <tr>
-                    <td>{{ $res_m[$i]['MONTH']}}</td>
+                    <td>{{ $res_m[$i]['MONTH']}}-{{ $res_m[$i]['YEAR']}}</td>
                     <td>{{ $res_m[$i]['COUNT(*)']}}</td>
                     <td>{{ $res_m[$i]['AVG(`time`)']}}</td>
                 </tr>   
@@ -38,7 +38,7 @@
         
             @for($i=0;$i< count($res_ma);$i++)
                 <tr>
-                    <td>{{ $res_ma[$i]['MONTH']}}</td>
+                    <td>{{ $res_ma[$i]['MONTH']}}-{{ $res_ma[$i]['YEAR']}}</td>
                     <td>{{ $res_ma[$i]['COUNT(*)']}}</td>
                     <td>{{ $res_ma[$i]['AVG(`time`)']}}</td>
                 </tr>   
@@ -56,7 +56,7 @@
         
             @for($i=0;$i< count($res_mn);$i++)
                 <tr>
-                    <td>{{ $res_mn[$i]['MONTH']}}</td>
+                    <td>{{ $res_mn[$i]['MONTH']}}-{{ $res_mn[$i]['YEAR']}}</td>
                     <td>{{ $res_mn[$i]['COUNT(*)']}}</td>
                     <td>{{ $res_mn[$i]['AVG(`time`)']}}</td>
                 </tr>   

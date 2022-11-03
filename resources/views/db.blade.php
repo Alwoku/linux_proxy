@@ -5,20 +5,19 @@
 @section('header2') <a href="{{ route('top') }}">TOP10 </a> @endsection
 @section('content')
 <div class="block is-fullwidth">
-    <div class="block is small">
-        {{ $data->links('pagination::bootstrap-4') }}
-    </div>
- 
-       
- 
+
+<nav id="paginate" class="block ">
+        {{ $data->links('layout.paginate') }}
+</nav> 
+<div class="block is-pulled-right m-2">
     <a href="{{ route('adds')}}">
-        <button class="button is-warning is-focused is-pulled-right m-2">
+        <button class="button is-warning is-focused">
             Добавить
         </button>
     </a>
-    
+ </div>   
 </div>
-<div class="container">
+<div class="message">
 @include('layout.message')    
 </div>
 

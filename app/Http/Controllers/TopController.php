@@ -7,6 +7,8 @@ use App\Models\Top;
 
 class TopController extends Controller
 {
+
+   // Output of the page view template.
    public function Slct(){
 
       return view('layout.top');
@@ -14,6 +16,8 @@ class TopController extends Controller
                        
 
    }
+
+   // Data output for the fastest time
    public function top_fast(){
       $tim = Top::where('active', 1)
                                  ->orderBy('time','asc')
@@ -23,6 +27,7 @@ class TopController extends Controller
        return view('top_fast', ['res_t' => $res_t]);
    }
 
+   // Output of data on the number of errors
    public function top_err(){
        $err = Top::select('error', Top::raw('COUNT(*)'))
        ->whereNotIn('error', ['NULL'])
@@ -33,21 +38,27 @@ class TopController extends Controller
             $res_e = array_slice($err, 0,10);
        return view('top_er', ['res_e' => $res_e]);
    }
+
+   // Output of data on the number of records per month
    public function month(){
 
-       $mon = Top::select(Top::raw('month(`created_at`) AS MONTH,COUNT(*), AVG(`time`)'))
-       ->groupBy('MONTH')->get();
+       $mon = Top::select(Top::raw('month(`created_at`) AS MONTH,YEAR(created_at) AS YEAR,COUNT(*), AVG(`time`)'))
+       ->groupBy('MONTH','YEAR')
+       ->orderBy(Top::raw('MONTH,YEAR '),'desc')
+       ->get();
          $res_m = $mon->toArray();
        
-       $mon_a = Top::select(Top::raw('MONTH(created_at) AS MONTH,COUNT(*), AVG(`time`), `active`'))
+       $mon_a = Top::select(Top::raw('MONTH(created_at) AS MONTH,YEAR(created_at) AS YEAR,COUNT(*), AVG(`time`), `active`'))
        ->where('active', '=', '1')
-       ->groupBy('MONTH')
+       ->orderBy(Top::raw('MONTH,YEAR '),'desc')
+       ->groupBy('MONTH','YEAR')
        ->get();
        $res_ma = $mon_a->toArray();
 
-       $mon_n = Top::select(Top::raw('MONTH(created_at) AS MONTH,COUNT(*), AVG(`time`), `active`'))
+       $mon_n = Top::select(Top::raw('MONTH(created_at) AS MONTH,YEAR(created_at) AS YEAR,COUNT(*), AVG(`time`), `active`'))
        ->where('active', '=', '0')
-       ->groupBy('MONTH')
+       ->orderBy(Top::raw('MONTH,YEAR '),'desc')
+       ->groupBy('MONTH','YEAR')
        ->get();
        $res_mn = $mon_n->toArray();
        
