@@ -1,0 +1,77 @@
+
+.li{
+    display: inline; 
+    margin: 1em;
+}
+table {
+    margin: auto;
+    table-layout:fixed;
+}
+
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+@media only screen and (max-width: 480px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .tablemobile {
+        overflow-x: auto;
+        display: block;
+    }
+}
+@media only screen and (max-width: 540px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    #paginate {
+    position: static;
+    display: block;
+    align-items: baseline;
+    }
+    .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous {
+        font-size: 9px;
+        justify-content: center;
+        margin: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .table_gl {
+        overflow: auto;
+        position: static;
+        display: block;
+    }
+    #paginate {
+        display:inline-block;
+        font-size: 10px; 
+    }
+    .pagination-ellipsis, .pagination-link, .pagination-next, .pagination-previous {
+
+        justify-content: center;
+        margin: auto;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        text-align: center;
+    }
+    .table_t {
+        width: 100%;
+        overflow: visible;
+        position: static;
+        display: block;
+    }
+}
+
+.is-one{
+    width: 10%;
+}
+
+.message{
+    text-align: center;
+    text-decoration: none;
+}
+/* a{
+
+} */
