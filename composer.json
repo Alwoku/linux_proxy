@@ -10,10 +10,6 @@
         "guzzlehttp/guzzle": "^7.2",
         "kyslik/column-sortable": "^6.4",
         "laravel/framework": "^9.19",
-<<<<<<< HEAD
-=======
-        "laravel/passport": "^11.3",
->>>>>>> bc1433d4a557331377a03e3955727749843da7da
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7"
     },
