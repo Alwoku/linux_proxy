@@ -29,7 +29,7 @@ class StoreAddRequest extends FormRequest
             'ip' => 'required|ipv4',
             'type' =>'required|exists:proxy_scan_log,type',
             'time' => 'required|numeric|gte:0',
-            'created_at'=> 'date|after_or_equal:''|before_or_equal:'.$date,
+            'created_at'=> 'date|before_or_equal:'.$date,
             'port'=> 'required|numeric|integer|min:1|max:65535',
             'description'=>'max:1000'
         ];
