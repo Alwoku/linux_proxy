@@ -79,7 +79,7 @@ class AddController extends Controller
        return view('edit', ['rc'=>$rc->find($add)]);
     }
 
-
+    /*
      * Entering the changed data into the database.
      *
      * @param  \App\Http\Requests\UpdateAddRequest  $request
