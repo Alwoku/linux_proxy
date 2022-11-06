@@ -4,14 +4,14 @@
 @section('header1')  @endsection
 @section('header2') <a href="{{ route('top') }}">TOP10 </a> @endsection
 @section('content')
-<div class="block is-fullwidth">
+<div class="block is-fullwidth mt-5">
 
-<nav id="paginate" class="block ">
+<div id="paginate" class="block ">
         {{ $data->links('layout.paginate') }}
-</nav> 
-<div class="block is-pulled-right m-2">
+</div> 
+<div class="block is-pulled-right ">
     <a href="{{ route('adds')}}">
-        <button class="button is-warning is-focused">
+        <button class="button is-warning is-focused mb-2">
             Добавить
         </button>
     </a>

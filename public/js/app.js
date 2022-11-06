@@ -1,4 +1,4 @@
-//Передаем данные из формы добавления записи (add.blade.php) в контроллер (AddController)
+//Passing the data from the record addition form (add.blade.php ) to the controller (AddController)
 
 $(document).ready(function(){    
   $("#ad_btn").click( function() {
@@ -26,8 +26,7 @@ $(document).ready(function(){
                   },
                   dataType:'json',
               error: function (err) {
-                if (err.status == 422) { // when status code is 422, it's a validation issue
-                    // console.log(err.responseJSON);
+                if (err.status == 422) { 
                     $("#errors").html("");
                     $.each(err.responseJSON.errors, function (key, value) {
                     $('#errors').append('<li >'+value+'</li>');
@@ -38,7 +37,7 @@ $(document).ready(function(){
               success: function(data) {
 
                  if(data.messange == "ok"){
-                  location.reload();
+                  window.location.replace('/edit/'+ data.id);
 
                 }
               }
@@ -46,7 +45,7 @@ $(document).ready(function(){
       })
     });
 
-    // Передаем данные из формы для обновлния записи (edit.blade.php) в контроллер (AddController)
+    // Passing the data from the form to update the record (edit.blade.php ) to the controller (AddController)
     
     $(document).ready(function(){    
       $("#ad_up").click( function() {
@@ -76,8 +75,7 @@ $(document).ready(function(){
                       },
                       dataType:'json',
                       error: function (err) {
-                        if (err.status == 422) { // when status code is 422, it's a validation issue
-                            console.log(err.responseJSON);
+                        if (err.status == 422) { 
                             $("#errors").html("");
                             $.each(err.responseJSON.errors, function (key, value) {
                             $('#errors').append('<li >'+value+'</li>');
@@ -86,7 +84,6 @@ $(document).ready(function(){
                         }
                       },
                   success: function(data) {
-                    console.log(data);
                     if(data.messange == "ok"){
                       history.go(-1);
                     }

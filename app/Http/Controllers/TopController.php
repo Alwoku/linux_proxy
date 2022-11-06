@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Top;
+use Carbon\Carbon;
 
 class TopController extends Controller
 {
@@ -42,24 +43,23 @@ class TopController extends Controller
    // Output of data on the number of records per month
    public function month(){
 
-       $mon = Top::select(Top::raw('month(`created_at`) AS MONTH,YEAR(created_at) AS YEAR,COUNT(*), AVG(`time`)'))
-       ->groupBy('MONTH','YEAR')
-       ->orderBy(Top::raw('MONTH,YEAR '),'desc')
-       ->get();
-         $res_m = $mon->toArray();
-       
-       $mon_a = Top::select(Top::raw('MONTH(created_at) AS MONTH,YEAR(created_at) AS YEAR,COUNT(*), AVG(`time`), `active`'))
-       ->where('active', '=', '1')
-       ->orderBy(Top::raw('MONTH,YEAR '),'desc')
-       ->groupBy('MONTH','YEAR')
-       ->get();
+       $mon = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M-%Y') AS Date,COUNT(*), AVG(`time`)"))
+                              ->groupBy('Date')
+                              ->orderBy('Date','desc')
+                              ->get();
+       $res_m = $mon->toArray();
+       $mon_a = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M-%Y') AS Date,COUNT(*), AVG(`time`), `active`"))
+                              ->where('active', '=', '1')
+                              ->groupBy('Date')
+                              ->orderBy('Date','desc')
+                              ->get();
        $res_ma = $mon_a->toArray();
 
-       $mon_n = Top::select(Top::raw('MONTH(created_at) AS MONTH,YEAR(created_at) AS YEAR,COUNT(*), AVG(`time`), `active`'))
-       ->where('active', '=', '0')
-       ->orderBy(Top::raw('MONTH,YEAR '),'desc')
-       ->groupBy('MONTH','YEAR')
-       ->get();
+       $mon_n = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M-%Y') AS Date,COUNT(*), AVG(`time`), `active`"))
+                              ->where('active', '=', '0')
+                              ->groupBy('Date')
+                              ->orderBy('Date','desc')
+                              ->get();
        $res_mn = $mon_n->toArray();
        
        return view('month',   ['res_m' => $res_m,

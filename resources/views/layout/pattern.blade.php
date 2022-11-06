@@ -19,8 +19,8 @@
       Table
     </p>
         <ul class="menu-label">
-            <li class="li block is-reght">  @yield('header1') </li>
-            <li class="li block is-reght">  @yield('header2') </li>
+            <li class="block  is-pulled-right">  @yield('header1') </li>
+            <li class="block">  @yield('header2') </li>
         </ul>
     </header>
     @yield('content')

@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Table;
 
-class AddController extends Controller{
-
+class AddController extends Controller
+{
 
     /**
  
@@ -39,8 +39,7 @@ class AddController extends Controller{
         $dat->description = $req->description;
         $dat->checked_ma = $req->checked_ma;
         $dat->save();
-        return response()->json(["messange"=>"ok"]);
-
+        return response()->json(["messange"=>"ok","id" => $dat->id ]);
     }
 
     

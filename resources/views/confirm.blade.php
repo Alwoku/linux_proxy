@@ -4,7 +4,7 @@
 @section('header1')  @endsection
 @section('header2') <a href="{{ route('home') }}">Главная </a> @endsection
 @section('content')  
-<article class="message is-warning m-">
+<article class="container message is-warning m-5 ">
   <div class="message-body">
   @csrf
             Вы уверены что хотите удалить {{$ip}} ?

@@ -29,8 +29,8 @@ class StoreAddRequest extends FormRequest
             'type' =>'required|exists:proxy_scan_log,type',
             'time' => 'required|numeric|gte:0',
             'created_at'=> 'date|before_or_equal:'.$date,
-            'port'=> 'required|numeric|digits_between:1,65535',
-            'checked_ma'=>'max:1000'
+            'port'=> 'required|numeric|integer|min:1|max:65535',
+            'description'=>'max:1000'
         ];
     }
     // Changing the messages being sent
@@ -42,11 +42,14 @@ class StoreAddRequest extends FormRequest
             'time.required'=>'Введите time',
             'created_at.before_or_equal'=>'Дата создания не должна превышать сегодняшнюю дату',
             'port.required'=>'Введите port',
+            'port.max'=>'Port не должен превышать 65535',
+            'port.min'=>'Port должен быть не менее 1',
             'ip.ipv4'=>'Неверный формат ip',
             'time.numeric'=>'Неверный формат time',
             'time.gte'=>'Неверный формат time',
             'port.numeric'=>'Неверный формат port',
             'port.digits_between'=>'Неверный формат port',
+            'description.max'=>'Длина текста не должна превышать 1000 символов'
         ];
     }
 }
