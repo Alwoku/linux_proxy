@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Top;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
 
 class TopController extends Controller
 {
@@ -42,23 +43,24 @@ class TopController extends Controller
 
    // Output of data on the number of records per month
    public function month(){
+      App::setLocale('ru');
 
-       $mon = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M-%Y') AS Date,COUNT(*), AVG(`time`)"))
-                              ->groupBy('Date')
-                              ->orderBy('Date','desc')
+       $mon = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M') AS month,DATE_FORMAT(`created_at`, '%Y') AS year, COUNT(*), AVG(`time`)"))
+                              ->groupBy(Top::raw('month , year'))
+                              ->orderBy(Top::raw('month , year'),'desc')
                               ->get();
        $res_m = $mon->toArray();
-       $mon_a = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M-%Y') AS Date,COUNT(*), AVG(`time`), `active`"))
+       $mon_a = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M') AS month,DATE_FORMAT(`created_at`, '%Y') AS year,COUNT(*), AVG(`time`), `active`"))
                               ->where('active', '=', '1')
-                              ->groupBy('Date')
-                              ->orderBy('Date','desc')
+                              ->groupBy(Top::raw('month , year'))
+                              ->orderBy(Top::raw('month , year'),'desc')
                               ->get();
        $res_ma = $mon_a->toArray();
 
-       $mon_n = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M-%Y') AS Date,COUNT(*), AVG(`time`), `active`"))
+       $mon_n = Top::select(Top::raw("DATE_FORMAT(`created_at`, '%M') AS month,DATE_FORMAT(`created_at`, '%Y') AS year,COUNT(*), AVG(`time`), `active`"))
                               ->where('active', '=', '0')
-                              ->groupBy('Date')
-                              ->orderBy('Date','desc')
+                              ->groupBy(Top::raw('month , year'))
+                              ->orderBy(Top::raw('month , year'),'desc')
                               ->get();
        $res_mn = $mon_n->toArray();
        

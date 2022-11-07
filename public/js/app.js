@@ -85,7 +85,7 @@ $(document).ready(function(){
                       },
                   success: function(data) {
                     if(data.messange == "ok"){
-                      history.go(-1);
+                      location.reload();
                     }
                   }
             });

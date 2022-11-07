@@ -18,7 +18,7 @@
         
             @for($i=0;$i< count($res_m);$i++)
                 <tr>
-                    <td>{{  $res_m[$i]['Date']}}</td>
+                    <td>{{ __('message.'.$res_m[$i]['month'])}} {{ $res_m[$i]['year']}}</td>
                     <td>{{ $res_m[$i]['COUNT(*)']}}</td>
                     <td>{{ $res_m[$i]['AVG(`time`)']}}</td>
                 </tr>   
@@ -37,7 +37,7 @@
         
             @for($i=0;$i< count($res_ma);$i++)
                 <tr>
-                    <td>{{ $res_ma[$i]['Date']}}</td>
+                    <td>{{ __('message.'.$res_ma[$i]['month'])}} {{ $res_ma[$i]['year']}}</td>
                     <td>{{ $res_ma[$i]['COUNT(*)']}}</td>
                     <td>{{ $res_ma[$i]['AVG(`time`)']}}</td>
                 </tr>   
@@ -55,7 +55,7 @@
         
             @for($i=0;$i< count($res_mn);$i++)
                 <tr>
-                    <td>{{ $res_mn[$i]['Date']}}</td>
+                    <td>{{ __('message.'.$res_mn[$i]['month'])}} {{ $res_mn[$i]['year']}}</td>
                     <td>{{ $res_mn[$i]['COUNT(*)']}}</td>
                     <td>{{ $res_mn[$i]['AVG(`time`)']}}</td>
                 </tr>   

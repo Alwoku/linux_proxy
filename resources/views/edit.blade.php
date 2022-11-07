@@ -54,9 +54,7 @@
                 <div class="field">
             <label class="label" for="port">Description</label>
                 <div class="controll">
-                    <textarea class="textarea is-primary" cols="1000" id="description" type="text" name="description">
-                    {{$rc->description}}
-                    </textarea>
+                    <textarea class="textarea is-primary" cols="1000" id="description" type="text" name="description"> {{$rc->description}}</textarea>
                 </div>     
         </div>  
         
