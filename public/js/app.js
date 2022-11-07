@@ -10,7 +10,6 @@ $(document).ready(function(){
       var port = $("#port").val();
       var description = $("#description").val();
       var checked_ma = $("#checked_ma").val();
-      console.log(checked_ma);
         $.ajax({
       uploadUrl:"{{route('add')}}",
               type: 'POST',
@@ -58,8 +57,6 @@ $(document).ready(function(){
         var port = $("#port").val();
         var description = $("#description").val();
         var checked_ma = $("#checked_ma").val();
-        
-        console.log(checked_ma);
             $.ajax({
           uploadUrl:"{{route('update')}}",
                   type: 'POST',
