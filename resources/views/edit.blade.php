@@ -80,7 +80,7 @@
         </div>  
             <button class="button is-link is-outlined mt-3 is-pulled-right" type="button" id="ad_up" >Отправить</button>
         </form>
-            <a href="{{ url()->previous() }}" class="button is-warning is-outlined m-3 is-pulled-right">Отмена</a>
+            <a href="{{ route('home') }}" class="button is-warning is-outlined m-3 is-pulled-right">Отмена</a>
 </div>
 
 
