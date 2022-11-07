@@ -18,7 +18,7 @@
     <p class="card-header-title">
       Table
     </p>
-        <ul class="menu-label">
+        <ul class="card-content">
             <li class="block  is-pulled-right">  @yield('header1') </li>
             <li class="block">  @yield('header2') </li>
         </ul>

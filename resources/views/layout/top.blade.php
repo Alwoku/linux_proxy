@@ -5,9 +5,15 @@
 @section('content')
 <div class="container is-fullwidth is-normal">
     <div class="title is-3">
-        <a href="{{route('fast')}}" class = "link m-5 ">TOP10 самых быстрых</a>
-        <a href="{{route('errors')}}"  class = "link m-5 ">TOP10 ошибок</a>
-        <a href="{{route('month')}}"  class = "link m-5 ">Таблица месяц общая</a>
+        <div class="blok">
+             <a href="{{route('fast')}}" class = "link m-5 ">TOP10 самых быстрых</a>
+        </div>
+        <div class="blok">
+            <a href="{{route('errors')}}"  class = "link m-5 ">TOP10 ошибок</a>
+        </div>
+        <div class="blok">  
+            <a href="{{route('month')}}"  class = "link m-5 ">Таблица месяц общая</a>
+        </div>  
     </div>
 </div>
 

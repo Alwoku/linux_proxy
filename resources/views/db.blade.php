@@ -4,7 +4,7 @@
 @section('header1')  @endsection
 @section('header2') <a href="{{ route('top') }}">TOP10 </a> @endsection
 @section('content')
-<div class="block is-fullwidth mt-5">
+<div class="block is-fullwidth m-3">
 
 <div id="paginate" class="block ">
         {{ $data->links('layout.paginate') }}
